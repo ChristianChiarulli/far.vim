@@ -11,7 +11,7 @@ call far#tools#setdefault('g:far#repl_devider', ' ➝  ')
 call far#tools#setdefault('g:far#cut_text_sign', '…')
 call far#tools#setdefault('g:far#collapse_sign', '- ')
 call far#tools#setdefault('g:far#expand_sign', '+ ')
-call far#tools#setdefault('g:far#window_min_content_width', 60)
+call far#tools#setdefault('g:far#window_min_content_width', 10)
 call far#tools#setdefault('g:far#preview_window_scroll_step', 1)
 call far#tools#setdefault('g:far#check_window_resize_period', 2000)
 call far#tools#setdefault('g:far#file_mask_favorites',
@@ -111,8 +111,8 @@ if executable('ack')
 endif
 
 if executable('rg')
-    let cmd = ['xargs',  'rg','--json','--with-filename', '--no-heading',
-    \ '--vimgrep',  '--max-count={limit}', '{pattern}',  '{file_mask}']
+    let cmd = [ 'rg','--json','--with-filename', '--no-heading',
+    \ '--vimgrep',  '--max-count={limit}', '{pattern}', '-g', '{file_mask}']
 
     call far#tools#setdefault('g:far#sources.rg', {})
     call far#tools#setdefault('g:far#sources.rg.fn', 'far.sources.shell.search')
